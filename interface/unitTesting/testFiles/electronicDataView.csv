@@ -1,0 +1,50 @@
+# this is a CSV file
+# name , enabled, threshold, x, y, category, unit
+# x, y must be between [-500,500]
+# categories:
+# temp = 0, power = 1, engine = 2
+#
+# unit written between brackets are manipulated by the program
+# others unit are used verbatim.
+#
+# manipulated unit are: [celsius], [on/off]
+#
+# #### The parser is not good so don't screw up this file ;). Use only comments and csv line.
+#
+# TEMPERATURES
+temp1,1,50,-350,-300,0,[celsius]
+temp2,1,3,350,-300,0,[celsius]
+temp3,1,2,-370,0,0,[celsius]
+temp4,1,50,370,0,0,[celsius]
+temp5,1,50,-350,300,0,[celsius]
+temp6,1,3,350,300,0,[celsius]
+temp7,1,2,0,-350,0,[celsius]
+temp8,1,50,0,-175,0,[celsius]
+temp9,1,50,0,0,0,[celsius]
+temp10,1,3,0,175,0,[celsius]
+temp11,1,2,0,350,0,[celsius]
+# POWER
+power1,1,50,-370,-350,1,A
+power2,1,3,300,-350,1,A
+power3,1,2,-350,0,1,S
+power4,1,50,350,0,1,A
+power5,1,50,-350,350,1,A
+power6,0,3,300,350,1,A
+power7,1,2,-100,-350,1,A
+power8,1,50,-100,-175,1,A
+power9,1,50,-100,0,1,A
+power10,1,3,-100,175,1,A
+power11,1,2,-100,350,1,A
+power12,1,2,175,0,1,[on/off]
+power13,1,2,400,-175,1,V
+power14,1,2,400,0,1,A
+power15,1,2,400,175,1,W
+# ENGINE 
+engine1,1,50,-350,-250,2,m/h
+engine2,1,3,350,-250,2,m/h
+engine3,1,2,150,-100,2,m/h
+engine4,1,50,150,0,2,m/h
+engine5,1,50,150,100,2,m/h
+engine6,1,3,-350,250,2,m/h
+engine7,1,3,350,250,2,m/h
+# end

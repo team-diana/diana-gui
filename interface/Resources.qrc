@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/elettronica.jpeg</file>
+        <file>images/arduino.jpeg</file>
+        <file>images/diana_logo.png</file>
+        <file>images/diana_logo_bianco.jpg</file>
+        <file>images/diana3.png</file>
+        <file>images/handwait.ani</file>
+        <file>images/invia.gif</file>
+        <file>images/Joystick copia.gif</file>
+        <file>images/joystick.jpeg</file>
+        <file>images/moon (1).jpg</file>
+        <file>images/moon (3).jpg</file>
+        <file>images/moon.jpg</file>
+        <file>images/moonNEUTRE copia.jpg</file>
+        <file>images/moonOFFbo.jpg</file>
+        <file>images/moonON.jpg</file>
+        <file>images/powerbutton.png</file>
+        <file>images/powerbuttonred.jpg</file>
+        <file>images/provaarduin.gif</file>
+        <file>images/refresh copia.gif</file>
+        <file>images/refresh.jpg</file>
+        <file>images/rueda.gif</file>
+        <file>images/rueda1.gif</file>
+        <file>images/rueda2.gif</file>
+        <file>images/rueda3.gif</file>
+        <file>images/rueda4.gif</file>
+        <file>images/stop.gif</file>
+    </qresource>
+</RCC>
