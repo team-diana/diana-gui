@@ -1,0 +1,3 @@
+[submodule "diana-qutty"]
+	path = diana-qutty
+	url = https://github.com/team-diana/diana-qutty
