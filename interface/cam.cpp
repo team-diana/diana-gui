@@ -14,6 +14,7 @@ DESCRIPTION: Classe che gestisce la camera
 #include <QBitmap>
 
 #include <stdio.h>
+#include <QVBoxLayout>
 
 using namespace std;
 
@@ -51,11 +52,11 @@ void DownloadThread::onSettingsChanged()
 
 
 //costruttore
-Cam::Cam(QGraphicsView* view, QObject* parent) :
+Cam::Cam(QWidget* cameraVideoContainer, QObject* parent) :
 QObject(parent)
 
 {
-    camWidget = new QVideoWidget();
+    cameraVideoWidget = new QVideoWidget(cameraVideoContainer);
     player = new QMediaPlayer;
     playlist=new QMediaPlaylist(player);
     //playlist->addMedia(QUrl::fromLocalFile("/home/alessandro/Video/Campeggio2013.mp4"));    //Cam1, Playlist Index 1
@@ -68,18 +69,19 @@ QObject(parent)
     player->setPlaylist(playlist);
     playlist->setCurrentIndex(selectedImageIndex);
 
-    item = new QGraphicsVideoItem;
-    scene = new QGraphicsScene(this);
-    view = new QGraphicsView(scene);
+    //item = new QGraphicsVideoItem();
+    scene = new QGraphicsScene(cameraVideoContainer);
+    //QGraphicsView* view = new QGraphicsView(scene);
 
-    player->setVideoOutput(item);
-    view->scene()->addItem(item);
-    view->show();
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->addWidget(cameraVideoWidget);
+    cameraVideoContainer->setLayout(layout);
+
+    //player->setVideoOutput(item);
+    player->setVideoOutput(cameraVideoWidget);
+   // view->scene()->addItem(item);
+    //view->show();
     player->play();     //libqt5
-
-
-
-
 }
 
 

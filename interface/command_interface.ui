@@ -383,7 +383,7 @@
           </attribute>
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QGraphicsView" name="graphicsView"/>
+            <widget class="QWidget" name="cameraVideoContainer" native="true"/>
            </item>
           </layout>
          </widget>
@@ -3524,7 +3524,7 @@ Carica: </string>
      <x>0</x>
      <y>0</y>
      <width>1187</width>
-     <height>25</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInterfaccia_di_comando">
@@ -3653,8 +3653,8 @@ Carica: </string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>342</width>
-                 <height>252</height>
+                 <width>96</width>
+                 <height>91</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_24">
@@ -5004,8 +5004,8 @@ Carica: </string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>326</width>
-                 <height>236</height>
+                 <width>107</width>
+                 <height>107</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -5270,8 +5270,8 @@ Carica: </string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>326</width>
-                 <height>236</height>
+                 <width>107</width>
+                 <height>107</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -5536,8 +5536,8 @@ Carica: </string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>326</width>
-                 <height>236</height>
+                 <width>107</width>
+                 <height>107</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_19">
@@ -5802,8 +5802,8 @@ Carica: </string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>326</width>
-                 <height>236</height>
+                 <width>107</width>
+                 <height>107</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout">
@@ -6068,8 +6068,8 @@ Carica: </string>
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>326</width>
-                 <height>236</height>
+                 <width>107</width>
+                 <height>107</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_22">

@@ -48,7 +48,7 @@ Command_interface::Command_interface(QWidget *parent) :
     qutty = new Qutty(this, ui->quttyTab);
     console=new Console(this);                      //Inizializza l'istanza della classe console(*1)
     cmds=new Commands;                              //Inizializza l'istanza della classe controller(*1)
-    Camera = new Cam(this->ui->graphicsView , this);                         //Inizializza l'istanza della classe cam
+    Camera = new Cam(this->ui->cameraVideoContainer, this);                         //Inizializza l'istanza della classe cam
     downloadT = new DownloadThread();
     controller=new QController(this);
     console->wnd=ui->et_console;

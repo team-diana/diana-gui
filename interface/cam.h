@@ -51,7 +51,7 @@ class Cam : public QObject
     Q_OBJECT
 
     public:
-        Cam( QGraphicsView* view , QObject* parent = NULL);   //Changed
+        Cam( QWidget* cameraVideoContainer, QObject* parent = NULL);   //Changed
         QPixmap getImage();
         void setImage(QString index);
 
@@ -66,7 +66,7 @@ class Cam : public QObject
         int selectedImageIndex;
 
         /*New code by Alessandro Quaranta*/
-        QVideoWidget* camWidget;
+        QVideoWidget* cameraVideoWidget;
         QMediaPlaylist* playlist;
         QMediaPlayer* player;
 
