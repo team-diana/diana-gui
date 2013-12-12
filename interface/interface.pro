@@ -8,13 +8,13 @@ QT += core gui network widgets testlib multimedia multimediawidgets
 
 TEMPLATE = app
 
-DEPENDPATH += ../qutty
+DEPENDPATH += ../diana-qutty
 DEPENDPATH += ../
 
 INCLUDEPATH += ./
-INCLUDEPATH += ../qutty/
-INCLUDEPATH += ../qutty/puttysrc
-INCLUDEPATH += ../qutty/tmux
+INCLUDEPATH += ../diana-qutty/
+INCLUDEPATH += ../diana-qutty/puttysrc
+INCLUDEPATH += ../diana-qutty/tmux
 
 INCLUDEPATH += /usr/include/QtMultimediaKit
 INCLUDEPATH += /usr/include/QtMobility

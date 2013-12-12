@@ -4,8 +4,8 @@ CONFIG += ordered static
 
 SUBDIRS += diana-qutty interface
 
-qutty.file = ./qutty/QuTTY.pro
+qutty.file = ./diana-qutty/diana-qutty.pro
 
 
-interface.depends = qutty
+interface.depends = diana-qutty
 
