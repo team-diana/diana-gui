@@ -83,9 +83,9 @@ FORMS    += command_interface.ui \
     settings_interface.ui \
     Qutty_config_window.ui
 
-LD_LIBRARY_PATH+=../qutty
+LD_LIBRARY_PATH+=../diana-qutty
 
-LIBS += -L.. -L../QuTTY -lQuTTY
+LIBS += -L.. -L../diana-qutty -ldiana-qutty
 
 win32 {
     LIBS += -L"$$_PRO_FILE_PWD_/SDL/lib/" -lSDL
