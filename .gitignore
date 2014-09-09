@@ -12,6 +12,10 @@
 *.la
 *.a
 
+*.kdev
+.kdev4/
+*.swp
+
 *.user
 *~
 build/
