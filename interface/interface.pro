@@ -8,8 +8,13 @@ QT += core gui network widgets testlib multimedia multimediawidgets
 
 TEMPLATE = app
 
+QMAKE_CXX = clang++
+QMAKE_CC = clang
+QMAKE_CXXFLAGS += --std=c++14 -Wall -Werror -pedantic
+
 DEPENDPATH += ../diana-qutty
 DEPENDPATH += ../
+
 
 INCLUDEPATH += /usr/include/QtMultimediaKit
 INCLUDEPATH += /usr/include/QtMobility

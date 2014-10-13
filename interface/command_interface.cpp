@@ -266,8 +266,8 @@ void Command_interface::startImageRq()
 
 void Command_interface::refreshImages()
 {
-    downloadT->run("right.png");
-    downloadT->run("left.png");
+    downloadT->runThread("right.png");
+    downloadT->runThread("left.png");
     Camera->setImage("right.png");
     QPixmap image1 = Camera->getImage();
     QIcon buttonIcon1 = image1;
