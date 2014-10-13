@@ -11,57 +11,52 @@ TEMPLATE = app
 DEPENDPATH += ../diana-qutty
 DEPENDPATH += ../
 
-INCLUDEPATH += ./
 INCLUDEPATH += /usr/include/QtMultimediaKit
 INCLUDEPATH += /usr/include/QtMobility
 
-#---  ros library. Still in development
-INCLUDEPATH += ../ros/
-#---
+INCLUDEPATH += ./ \
+  ./utils \
+  ./data \
+  ./settings \
+  ./camera
 
 TARGET = interface
 
 CONFIG += ordered
 
-SOURCES += main.cpp\
-    command_interface.cpp \
-    cam.cpp \
-    settings.cpp \
-    settings_page.cpp \
-    settings_network.cpp \
-    d_logger.cpp \
-    electronic_view.cpp \
-    abstract_electronic_data_manager.cpp \
-    test_electronic_data_manager.cpp \
-    ros_electronic_data_manager.cpp \
-    electronicdataview.cpp \
-    unitTesting/electronicviewcsvreader.cpp \
-    settings_interface.cpp \
-    unitTesting/unittestmanager.cpp \
-    unitTesting/unittest.cpp \
+SOURCES += \
+  ./data/electronicdataview.cpp \
+  ./data/electronic_view.cpp \
+  ./data/abstract_electronic_data_manager.cpp \
+  ./command_interface.cpp \
+  ./settings/settings_page.cpp \
+  ./settings/settings.cpp \
+  ./settings/settings_network.cpp \
+  ./settings/settings_interface.cpp \
+  ./utils/d_logger.cpp \
+  ./unitTesting/unittest.cpp \
+  ./unitTesting/unittestmanager.cpp \
+  ./unitTesting/electronicviewcsvreader.cpp \
+  ./camera/cam.cpp \
+  ./main.cpp
 
+HEADERS  += \
+  ./command_interface.h \
+  ./data/electronic_view.h \
+  ./data/electronicdataview.h \
+  ./data/abstract_electronic_data_manager.h \
+  ./costants.h \
+  ./settings/settings_network.h \
+  ./settings/settings_interface.h \
+  ./settings/settings.h \
+  ./settings/settings_page.h \
+  ./utils/d_logger.h \
+  ./unitTesting/unittest.h \
+  ./unitTesting/unittestmanager.h \
+  ./unitTesting/electronicviewcsvreader.h \
+  ./camera/cam.h
 
-HEADERS  += command_interface.h \
-    cam.h \
-    settings.h \
-    settings_page.h \
-    settings_network.h \
-    d_logger.h \
-    electronic_view.h \
-    ros_electronic_data_manager.h \
-    abstract_electronic_data_manager.h \
-    test_electronic_data_manager.h \
-    electronicdataview.h \
-    unitTesting/electronicviewcsvreader.h \
-    settings_interface.h \
-    costants.h \
-    unitTesting/unittestmanager.h \
-    unitTesting/unittest.h \
-
-FORMS    += command_interface.ui \
-    settings.ui \
-    settings_network.ui \
-    settings_interface.ui \
+FORMS += $$files(ui/*.ui)
 
 win32 {
     DEFINES += _WINDOWS
@@ -71,8 +66,7 @@ unix {
     DEFINES += _LINUX
 }
 
-RESOURCES += \
-    Resources.qrc
+RESOURCES += ui/Resources.qrc
 
 # find a way to copy config files to the build directory automatically.
 

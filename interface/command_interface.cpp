@@ -13,8 +13,7 @@ DESCRIPTION: Classe Principale del software, questa classe viene richiamata dal 
 #include <QPushButton>
 #include <QDebug>
 #include <QSettings>
-
-#include <test_electronic_data_manager.h>
+#include <QTimer>
 
 using namespace std;
 
@@ -36,7 +35,7 @@ Command_interface::Command_interface(QWidget *parent) :
     Camera = new Cam(this->ui->cameraVideoContainer, this);                         //Inizializza l'istanza della classe cam
     downloadT = new DownloadThread();
     electronicView = new ElectronicView(ui->dianaCanvas, ui->dianaRadioButtonContainer);
-    electronicView->setElectronicDataManager(new TestElectronicDataManager());
+    //electronicView->setElectronicDataManager(new TestElectronicDataManager());
     electronicView->setupCanvas();
     DLogger::initialize(ui->tv_log);
     camindex = 1;

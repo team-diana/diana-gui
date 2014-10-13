@@ -1,6 +1,6 @@
 #include <QtTest/QtTest>
 
-#include "../electronicdataview.h"
+#include "electronicdataview.h"
 #include "electronicviewcsvreader.h"
 #include <QDebug>
 
