@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QBitmap>
-#include "comunication.h"
 #include "cam.h"
 #include "electronic_view.h"
 
@@ -60,7 +59,6 @@ private:
 
 private:
 
-    Comunication* com;
     Cam *Camera;
     QTimer *timer;
     DownloadThread *downloadT;

@@ -33,15 +33,6 @@ Command_interface::Command_interface(QWidget *parent) :
     ui->setupUi(this);                              //Collega la classe alla  user inteface (UI)
     ui->actionDisconnetti->setDisabled(disabled);   //ActionDisconnetti � un tasto definito nella UI
     ui->et_console->setText("Team@Diana: ");        //et_console � la TextBox che rappresenta la console
-    com=new Comunication(this);                           //Inizializza l'istanza della classe comunication(*1)
-    com->tab_data=ui->tab_data;
-    com->console=ui->et_data;
-    com->log=ui->tv_log;
-    com->valSpeed=ui->cbox_valSpeed;
-    com->valTime=ui->cbox_valTime;
-    com->valX=ui->sbox_povs;
-    com->valY=ui->sbox_povd;
-    com->build_table();
     Camera = new Cam(this->ui->cameraVideoContainer, this);                         //Inizializza l'istanza della classe cam
     downloadT = new DownloadThread();
     electronicView = new ElectronicView(ui->dianaCanvas, ui->dianaRadioButtonContainer);
@@ -136,9 +127,6 @@ void Command_interface::dischargeBoard() {
 
 void Command_interface::sendPov()
 {
-    int x=ui->sbox_povs->value();
-    int y=ui->sbox_povd->value();
-    com->sendControll(0,x,y,-1,-1);
 }
 
 
@@ -228,69 +216,38 @@ void Command_interface::convertspeed()
 
 void Command_interface::reqData()
 {
-    ui->et_data->setText("");
-    com->dataReq=1;
-    com->send("z");
 }
 
 void Command_interface::offMotors()
 {
-    com->send("g1");
-    com->send("g2");
-    com->send("g3");
-    com->send("g4");
  }
 
 void Command_interface::powerOnMotor() {
-   com->send("h"+toN.number(ui->cbox_joystick->currentIndex()+1));
 }
 
 
 void Command_interface::powerOffMotor()
 {
-   com->send("g"+toN.number(ui->cbox_joystick->currentIndex()+1));
 }
 
 void Command_interface::powerOnBoard() {
-   com->send("o"+toN.number(ui->cbox_selectBoard->currentIndex()));
 }
 
 void Command_interface::powerOffBoard()
 {
-   com->send("f"+toN.number(ui->cbox_selectBoard->currentIndex()));
 }
 
 void Command_interface::sendSpeed()
 {
-    if(ui->cbox_valSpeed->currentIndex()!=com->nspeed)
-    {
-        com->send("v"+toN.number(ui->cbox_valSpeed->currentIndex()));
-        com->nspeed=ui->cbox_valSpeed->currentIndex();
-    }
-    if(ui->cbox_valTime->currentIndex()!=com->ntime)
-    {
-        com->send("t"+toN.number(ui->cbox_valTime->currentIndex()));
-        com->ntime=ui->cbox_valTime->currentIndex();
-    }
 }
 
 //Inizia la connessione con il server, utilizzando la classe Comunication
 void Command_interface::connectSerial()
 {
-    com->initial(SERIAL);                             //Inizializza la comunicazione
-    ui->actionConnetti_via_seriale->setDisabled(true);      //Disabilit� il tasto actionConnetti (Dato che � gi� connesso)
-    ui->actionConnetti_via_XBee->setDisabled(true);      //Disabilit� il tasto actionConnetti (Dato che � gi� connesso)
-    disabled = false;
-    ui->actionDisconnetti->setDisabled(disabled);  //Abilita il tasto actionDisconnetti
 }
 
 void Command_interface::connectXBee()
 {
-    com->initial(XBEE);                             //Inizializza la comunicazione
-    ui->actionConnetti_via_XBee->setDisabled(true);      //Disabilit� il tasto actionConnetti (Dato che � gi� connesso)
-    ui->actionConnetti_via_seriale->setDisabled(true);      //Disabilit� il tasto actionConnetti (Dato che � gi� connesso)
-    disabled = false;
-    ui->actionDisconnetti->setDisabled(disabled);  //Abilita il tasto actionDisconnetti
 }
 
 //Connetti il Joystick (o almeno ci prova)
@@ -301,11 +258,6 @@ void Command_interface::connectJoystick()
 //Disconnette dal Server
 void Command_interface::disconnection()
 {
-    com->disc();
-    disabled = true;
-    ui->actionConnetti_via_seriale->setDisabled(false);
-    ui->actionConnetti_via_XBee->setDisabled(false);
-    ui->actionDisconnetti->setDisabled(disabled);
 }
 
 void Command_interface::startImageRq()

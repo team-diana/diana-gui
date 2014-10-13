@@ -9,7 +9,6 @@
 #include <QString>
 #include <QPixmap>
 #include <QProcess>
-#include <comunication.h>
 #include <QLabel>
 #include <QProcess>
 #include <QThread>
