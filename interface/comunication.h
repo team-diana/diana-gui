@@ -4,8 +4,6 @@
 #include <QComboBox>
 #include <QSpinBox>
 #include <QTimer>
-#include <commands.h>
-#include "XBeeAPI.h"
 #include <stdint.h>
 
 #ifndef COMUNICATION_H
@@ -79,7 +77,6 @@ public:
     QSpinBox *valX;
     QSpinBox *valY;
     QTimer *timer;
-    Commands *cmds;
     int nspeed,ntime,k,j,i;
     int cmd_sx,cmd_dx;
     int connection_type;

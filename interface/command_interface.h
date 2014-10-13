@@ -4,11 +4,7 @@
 #include <QMainWindow>
 #include <QBitmap>
 #include "comunication.h"
-#include "commands.h"
-#include "qcontroller.h"
-#include <console.h>
 #include "cam.h"
-#include "qutty.h"
 #include "electronic_view.h"
 
 namespace Ui
@@ -65,13 +61,9 @@ private:
 private:
 
     Comunication* com;
-    Commands* cmds;
-    QController *controller;
-    Console *console;
     Cam *Camera;
     QTimer *timer;
     DownloadThread *downloadT;
-    Qutty* qutty;
     ElectronicView* electronicView;
     short int camindex;
     short int imageindex;

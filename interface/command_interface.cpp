@@ -7,9 +7,6 @@ DESCRIPTION: Classe Principale del software, questa classe viene richiamata dal 
 #include "ui_command_interface.h"
 #include "settings.h"
 #include "d_logger.h"
-
-#include "qutty.h"
-
 #include <sstream>
 #include <QThread>
 #include <QSignalMapper>
@@ -45,21 +42,12 @@ Command_interface::Command_interface(QWidget *parent) :
     com->valX=ui->sbox_povs;
     com->valY=ui->sbox_povd;
     com->build_table();
-    qutty = new Qutty(this, ui->quttyTab);
-    console=new Console(this);                      //Inizializza l'istanza della classe console(*1)
-    cmds=new Commands;                              //Inizializza l'istanza della classe controller(*1)
     Camera = new Cam(this->ui->cameraVideoContainer, this);                         //Inizializza l'istanza della classe cam
     downloadT = new DownloadThread();
-    controller=new QController(this);
-    console->wnd=ui->et_console;
-    console->com=com;
-    console->cmds=cmds;
-    controller->log=ui->tv_log;
     electronicView = new ElectronicView(ui->dianaCanvas, ui->dianaRadioButtonContainer);
     electronicView->setElectronicDataManager(new TestElectronicDataManager());
     electronicView->setupCanvas();
     DLogger::initialize(ui->tv_log);
-    ui->et_console->installEventFilter(console);
     camindex = 1;
     imageindex = -1;
     timer=new QTimer(this);   //Costruisce un Timer per inserire un delay dopo la pressione di un tasto
@@ -107,7 +95,6 @@ void Command_interface::connectAction()
     connect(ui->cbox_valTime, SIGNAL(currentIndexChanged(QString)), this, SLOT(convertspeed()));
     connect(downloadT, SIGNAL(processError()), this, SLOT(onImageDownloadError()));
     connect(ui->imageDownloadPeriodBox, SIGNAL(valueChanged(int)), this, SLOT(setImageRefreshPeriod(int)));
-    connect(ui->newQuttyTabButton, SIGNAL(clicked()), qutty, SLOT(createNewTab()));
     connectCamButtons();
 
     ui->tv_log->append("Eseguito");
@@ -119,7 +106,7 @@ void Command_interface::connectCamButtons()
     QPushButton* camPushButtons[] = {ui->cam_1, ui->cam_2, ui->cam_3};
     // Aggiungi nella lista di stringhe i nomi dei file relativi ad ogni camera.
     camNames << "right.png"  << "left.png";
-    
+
     // Crea un QSignalMapper che indica alla funzione changeCam() quale camera attivare
     // in base al numero del QPushButton premuto.
     QSignalMapper* signalMapper = new QSignalMapper(this);
@@ -129,27 +116,22 @@ void Command_interface::connectCamButtons()
         signalMapper->setMapping(camPushButtons[i], i);
         connect(camPushButtons[i], SIGNAL(clicked()), signalMapper, SLOT(map()));
     }
-    
+
     connect(signalMapper, SIGNAL(mapped(int)), Camera, SLOT(changeCam(int)));
 
 }
 
 void Command_interface::caBoard()
 {
-    QString cmd=ui->cbox_selectBoard->currentIndex()+97+toN.number(ui->cbox_valBoard->currentIndex());
-    com->send(cmd);
 }
 
 void Command_interface::stopMotors()
 {
-    com->send("s");
 }
 
 void Command_interface::chargeBoard() {
-    com->send("e"+toN.number(ui->cbox_selectBoard->currentIndex()));
 }
 void Command_interface::dischargeBoard() {
-    com->send("q"+toN.number(ui->cbox_selectBoard->currentIndex()));
 }
 
 void Command_interface::sendPov()
@@ -314,17 +296,12 @@ void Command_interface::connectXBee()
 //Connetti il Joystick (o almeno ci prova)
 void Command_interface::connectJoystick()
 {
-    controller->comm=com;
-    controller->Init();
-    controller->Check();
-    controller->Conn();
 }
 
 //Disconnette dal Server
 void Command_interface::disconnection()
 {
     com->disc();
-    controller->disc();
     disabled = true;
     ui->actionConnetti_via_seriale->setDisabled(false);
     ui->actionConnetti_via_XBee->setDisabled(false);

@@ -2,7 +2,7 @@ TEMPLATE = subdirs
 
 CONFIG += ordered static
 
-SUBDIRS += diana-qutty interface
+SUBDIRS += interface
 
 qutty.file = ./diana-qutty/diana-qutty.pro
 

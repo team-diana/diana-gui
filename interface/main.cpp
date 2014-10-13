@@ -6,7 +6,7 @@ DESCRIPTION: Ciclo Principale del software, viene eseguito all'avvio e richiama 
 
 #include <QApplication>
 #include "command_interface.h"
-#include "QtTimer.h"
+#include <QTimer>
 #include "unitTesting/electronicviewcsvreader.h"
 #include "unitTesting/unittestmanager.h"
 #include <strings.h>
